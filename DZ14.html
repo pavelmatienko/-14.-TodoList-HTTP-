@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .js-missioncompleted{
+            background-color: rgba(0, 255, 64, 0.664);
+        }
+        .js-mission{
+            background-color: rgba(255, 0, 0, 0.521);
+        }
+    </style>
+</head>
+<body>
+    <ul id="js-list"></ul>
+    <script>
+        const todoList = {
+                  getTood(){
+                      const xhr = new XMLHttpRequest();
+                      xhr.open('GET','https://jsonplaceholder.typicode.com/todos');
+                      xhr.send();
+                      xhr.onload = function () {
+                          const jsonTodos = xhr.response;
+                          const todos = JSON.parse(jsonTodos);
+                          todos.forEach((todo) => {
+                              if (todo.completed !== false) {
+                                  document.getElementById("js-list").innerHTML += "<li class = 'js-mission-completed'>" + todo.title + "</li>";
+                              } else {
+                                  document.getElementById("js-list").innerHTML += "<li class = 'js-mission-not-completed'>" + todo.title + "</li>";
+                              }
+                              console.log('title = ', todo.title + ', is completed? = ', todo.completed);
+                          });
+                          // todos.map((todo) => {
+                          //     console.log('todo', todo);
+                          // });
+                      }
+                  },
+              }
+              todoList.getTood();
+    </script>
+</body>
+</html>
