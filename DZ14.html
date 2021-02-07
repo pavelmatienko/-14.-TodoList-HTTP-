@@ -17,29 +17,29 @@
 <body>
     <ul id="js-list"></ul>
     <script>
-        const todoList = {
-                  getTood(){
-                      const xhr = new XMLHttpRequest();
-                      xhr.open('GET','https://jsonplaceholder.typicode.com/todos');
-                      xhr.send();
-                      xhr.onload = function () {
-                          const jsonTodos = xhr.response;
-                          const todos = JSON.parse(jsonTodos);
-                          todos.forEach((todo) => {
-                              if (todo.completed !== false) {
-                                  document.getElementById("js-list").innerHTML += "<li class = 'js-mission-completed'>" + todo.title + "</li>";
-                              } else {
-                                  document.getElementById("js-list").innerHTML += "<li class = 'js-mission-not-completed'>" + todo.title + "</li>";
-                              }
-                              console.log('title = ', todo.title + ', is completed? = ', todo.completed);
-                          });
-                          // todos.map((todo) => {
-                          //     console.log('todo', todo);
-                          // });
-                      }
-                  },
-              }
-              todoList.getTood();
+            const todoList = {
+                getTood(){
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET','https://jsonplaceholder.typicode.com/todos');
+                    xhr.send();
+                    xhr.onload = function () {
+                        const jsonTodos = xhr.response;
+                        const todos = JSON.parse(jsonTodos);
+                        todos.forEach((todo) => {
+                            if (todo.completed !== false) {
+                                document.getElementById("js-list").innerHTML += "<li class = 'js-mission-completed'>" + todo.title + "</li>";
+                            } else {
+                                document.getElementById("js-list").innerHTML += "<li class = 'js-mission-not-completed'>" + todo.title + "</li>";
+                            }
+                            console.log('title = ', todo.title + ', is completed? = ', todo.completed);
+                        });
+                        // todos.map((todo) => {
+                        //     console.log('todo', todo);
+                        // });
+                    }
+                },
+            }
+            todoList.getTood();
     </script>
 </body>
 </html>
